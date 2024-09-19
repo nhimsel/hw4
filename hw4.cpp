@@ -5,13 +5,18 @@ using namespace std;
 int main()
 {
     //Task 1
-    string test="this is a test string";
+    cout << "Please enter something:" << endl;
+    string something;
+    cin >> something;
     string working;
-    for(int i=test.length()-1; i>=0; i--)
+    for(int i=something.length()-1; i>=0; i--)
     {
-        working+=test.substr(i,1);
+        working+=something.substr(i,1);
     }
     cout << working << endl;
+
+    //Task 2
+    
 
     return 0;
 }
