@@ -102,5 +102,31 @@ int main()
         cout << "The password needs a lowercase character." << endl;
     }
 
+    //Bonus Task
+    cout << "Please enter a sentence: " << endl;
+    string senten;
+    getline(cin, senten);
+    string out;
+    if ((int)senten[0]>=97&&(int)senten[0]<=122)
+    {
+        out+=char((int)senten[0]-32);
+    }
+    else 
+    {
+        out+=senten[0];
+    }
+    for (int i=0; i<senten.length()-1;i++)
+    {
+        if (senten[i]==' '&& (int)senten[i+1]>=97&&(int)senten[i+1]<=122)
+        {
+            out+=char((int)senten[i+1]-32);
+        }  
+        else 
+        {
+            out+=senten[i+1];
+        } 
+    }
+    cout << "The first letter of each word has been capitalized: \n" << out << endl;
+
     return 0;
 }
