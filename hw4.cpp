@@ -48,5 +48,59 @@ int main()
     }
     cout << lowercase << endl;
 
+    //Task 4
+    cout << "Input a password:" << endl;
+    string pw;
+    getline(cin, pw);
+    bool length = false;
+    bool upper = false;
+    bool lower = false;
+    if (pw.length()>=8)
+    {
+        length = true;
+    }
+     int upperct=0;
+    for(int i=0; i<pw.length(); i++)
+    {
+        char temp = pw[i];
+        if((int)temp>=65&&(int)temp<=90)
+        {
+            upperct++;
+        }
+    }
+    if (upperct>0)
+    {
+        upper = true;
+    }
+    int lowerct=0;
+    for(int i=0; i<pw.length(); i++)
+    {
+        char temp = pw[i];
+        if((int)temp>=97&&(int)temp<=122)
+        {
+            lowerct++;
+        }
+    }
+    if (lowerct>0)
+    {
+        lower = true;
+    }
+    if (length && upper && lower)
+    {
+        cout << "Password is valid." << endl;
+    }
+    if (!length)
+    {
+        cout << "The password is too short." << endl;
+    }
+    if (!upper)
+    {
+        cout << "The password needs an uppercase character." << endl;
+    }
+    if (!lower)
+    {
+        cout << "The password needs a lowercase character." << endl;
+    }
+
     return 0;
 }
