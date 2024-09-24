@@ -68,67 +68,70 @@ int main()
 
 
     //Task 4
-    cout << "Input a password:" << endl;
-    string pw;
-    getline(cin, pw);
     bool length = false;
     bool upper = false;
     bool lower = false;
+    bool good = false;
 
-    //check if the password is at least 8 characters long
-    if (pw.length()>=8)
+    do 
     {
-        length = true;
-    }
-    
-    //check if there is at least one uppercase character in the password
-    int upperct=0;
-    for(int i=0; i<pw.length(); i++)
-    {
-        char temp = pw[i];
-        if((int)temp>=65&&(int)temp<=90)
+        cout << "Input a password:" << endl;
+        string pw;
+        getline(cin, pw);
+        //check if the password is at least 8 characters long
+        if (pw.length()>=8)
         {
-            upperct++;
+            length = true;
         }
-    }
-    if (upperct>0)
-    {
-        upper = true;
-    }
-
-    //check if there is at least one lowercase character in the password
-    int lowerct=0;
-    for(int i=0; i<pw.length(); i++)
-    {
-        char temp = pw[i];
-        if((int)temp>=97&&(int)temp<=122)
+        if(length)
         {
-            lowerct++;
+            //check if there is at least one uppercase and one lowercase character in the password
+            int upperct=0;
+            int lowerct=0;
+            for(int i=0; i<pw.length(); i++)
+            {
+                char temp = pw[i];
+                if((int)temp>=65&&(int)temp<=90)
+                {
+                    upperct++;
+                }
+                else if((int)temp>=97&&(int)temp<=122)
+                {
+                    lowerct++;
+                }
+            }
+            if (upperct>0)
+            {
+                upper = true;
+            }
+            if (lowerct>0)
+            {
+                lower = true;
+            }
         }
-    }
-    if (lowerct>0)
-    {
-        lower = true;
-    }
 
-    //inform the user if their password is valid, otherwise state the issue
-    if (length && upper && lower)
-    {
-        cout << "Password is valid." << endl;
-    }
-    if (!length)
-    {
-        cout << "The password is too short." << endl;
-    }
-    if (!upper)
-    {
-        cout << "The password needs an uppercase character." << endl;
-    }
-    if (!lower)
-    {
-        cout << "The password needs a lowercase character." << endl;
-    }
-
+        //inform the user if their password is valid, otherwise state the issue
+        if (length && upper && lower)
+        {
+            cout << "Password is valid." << endl;
+            good = true;
+        }
+        else
+        {
+            if (!length)
+            {
+                cout << "The password is too short." << endl;
+            }
+            if (!upper)
+            {
+                cout << "The password needs an uppercase character." << endl;
+            }
+            if (!lower)
+            {
+                cout << "The password needs a lowercase character." << endl;
+            }
+        }
+    }while (!good);
 
 
     cout << endl;
