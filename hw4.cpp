@@ -68,46 +68,47 @@ int main()
 
 
     //Task 4
+    bool good = false;
     bool length = false;
     bool upper = false;
-    bool lower = false;
-    bool good = false;
+    bool lower= false ;
 
     do 
     {
         cout << "Input a password:" << endl;
         string pw;
         getline(cin, pw);
+        length = false;
+        upper = false;
+        lower = false;
+        
         //check if the password is at least 8 characters long
         if (pw.length()>=8)
         {
             length = true;
         }
-        if(length)
+        //check if there is at least one uppercase and one lowercase character in the password
+        int upperct=0;
+        int lowerct=0;
+        for(int i=0; i<pw.length(); i++)
         {
-            //check if there is at least one uppercase and one lowercase character in the password
-            int upperct=0;
-            int lowerct=0;
-            for(int i=0; i<pw.length(); i++)
+            char temp = pw[i];
+            if((int)temp>=65&&(int)temp<=90)
             {
-                char temp = pw[i];
-                if((int)temp>=65&&(int)temp<=90)
-                {
-                    upperct++;
-                }
-                else if((int)temp>=97&&(int)temp<=122)
-                {
-                    lowerct++;
-                }
+                upperct++;
             }
-            if (upperct>0)
+            else if((int)temp>=97&&(int)temp<=122)
             {
-                upper = true;
+                lowerct++;
             }
-            if (lowerct>0)
-            {
-                lower = true;
-            }
+        }
+        if (upperct>0)
+        {
+            upper = true;
+        }
+        if (lowerct>0)
+        {
+            lower = true;
         }
 
         //inform the user if their password is valid, otherwise state the issue
